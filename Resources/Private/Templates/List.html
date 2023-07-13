@@ -1,0 +1,37 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" xmlns:pagebased="http://typo3.org/ns/Zeroseven/Pagebased/ViewHelpers" data-namespace-typo3-fluid="true">
+	<pagebased:pagination items="{posts}" itemsPerStage="{settings.itemsPerStage}" maxStages="{settings.maxStages}" as="pagination">
+		<div id="id-pagebased_blog-l{data.uid}">
+			<f:if condition="{requestArguments._ajax}">
+				<f:then>
+					<pagebased:pagination.eachStage selected="1">
+						{f:render(section: "Stage", arguments: "{_all}")}
+					</pagebased:pagination.eachStage>
+				</f:then>
+				<f:else>
+					<pagebased:pagination.eachStage active="1" iteration="i">
+						{f:render(section: "Stage", arguments: "{_all}")}
+					</pagebased:pagination.eachStage>
+				</f:else>
+			</f:if>
+		</div>
+
+		<div id="id-pagebased_blog-c{data.uid}">
+			<pagebased:pagination.link.next ajaxAppendSelectors="#id-pagebased_blog-l{data.uid}" ajaxReplaceSelectors="#id-pagebased_blog-c{data.uid}" demand="{demand}">
+				Next
+			</pagebased:pagination.link.next>
+		</div>
+	</pagebased:pagination>
+
+	<f:section name="Stage">
+		<pagebased:pagination.eachItem as="post" iteration="i">
+			<div class="item{i.cycle}">
+				<f:link.page pageUid="{post.uid}">
+					<f:if condition="{post.firstImage}">
+							<f:image image="{post.firstImage}" width="200" /><br>
+					</f:if>
+					{post.title} <small>{post.date -> f:format.date(format:"d.m.Y")}</small>
+				</f:link.page>
+			</div>
+		</pagebased:pagination.eachItem>
+	</f:section>
+</html>
