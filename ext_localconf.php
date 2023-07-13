@@ -1,9 +1,9 @@
  <?php
 
-defined('TYPO3') || die('🧨');
+defined('TYPO3') || die('✘');
 
-call_user_func(static function () {
-    $object = \Zeroseven\Pagebased\Registration\ObjectRegistration::create('Post')
+call_user_func(static function (string $_EXTKEY) {
+    $object = \Zeroseven\Pagebased\Registration\ObjectRegistration::create('LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:registration.object.title')
         ->setClassName(\Zeroseven\PagebasedBlog\Domain\Model\Post::class)
         ->setControllerClass(\Zeroseven\PagebasedBlog\Controller\PostController::class)
         ->setRepositoryClass(\Zeroseven\PagebasedBlog\Domain\Repository\PostRepository::class)
@@ -13,22 +13,21 @@ call_user_func(static function () {
         ->enableTop()
         ->enableTags();
 
-    $category = \Zeroseven\Pagebased\Registration\CategoryRegistration::create('Post-Category')
+    $category = \Zeroseven\Pagebased\Registration\CategoryRegistration::create('LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:registration.category.title')
         ->setClassName(\Zeroseven\PagebasedBlog\Domain\Model\Category::class)
         ->setRepositoryClass(\Zeroseven\PagebasedBlog\Domain\Repository\CategoryRepository::class)
         ->setDocumentType(146);
 
-    $listPlugin = \Zeroseven\Pagebased\Registration\ListPluginRegistration::create('Post list')
-        ->setDescription('Display object in a list')
-        ->setIconIdentifier('content-bullets');
+    $listPlugin = \Zeroseven\Pagebased\Registration\ListPluginRegistration::create('LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:registration.list.title')
+        ->setDescription('LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:registration.list.description');
 
-    $filterPlugin = \Zeroseven\Pagebased\Registration\FilterPluginRegistration::create('Post filter')
-        ->setDescription('Filter objects');
+    $filterPlugin = \Zeroseven\Pagebased\Registration\FilterPluginRegistration::create('LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:registration.filter.title')
+        ->setDescription('LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:registration.filter.description');
 
-    \Zeroseven\Pagebased\Registration\Registration::create('pagebased_blog')
+    \Zeroseven\Pagebased\Registration\Registration::create($_EXTKEY)
         ->setObject($object)
         ->setCategory($category)
         ->enableListPlugin($listPlugin)
         ->enableFilterPlugin($filterPlugin)
         ->store();
-});
+}, 'pagebased_blog');

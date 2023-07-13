@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="messages">
+    <header />
+    <body>
+		<trans-unit id="registration.object.title">
+		  <source>Blog post</source>
+		</trans-unit>
+		<trans-unit id="registration.category.title">
+		  <source>Blog category</source>
+		</trans-unit>
+		<trans-unit id="registration.list.title">
+		  <source>Blog list</source>
+		</trans-unit>
+		<trans-unit id="registration.list.description">
+		  <source>Display blog post in a list.</source>
+		</trans-unit>
+		<trans-unit id="registration.filter.title">
+		  <source>Blog filter</source>
+		</trans-unit>
+		<trans-unit id="registration.filter.description">
+		  <source>Filter blog posts.</source>
+		</trans-unit>
+    </body>
+  </file>
+</xliff>
