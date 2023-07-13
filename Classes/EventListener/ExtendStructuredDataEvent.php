@@ -104,6 +104,21 @@ class ExtendStructuredDataEvent
                     ]
                 ], 'Person');
             }
+
+            if (($publisher = SettingsUtility::getPluginConfiguration($registration, 'settings.structuredData.publisher')) && !empty($publisher['name'])) {
+                $event->addPropertyType('publisher', [
+                    'name' => $publisher['name'],
+                    'url' => $publisher['url'] ?? $this->getRootPageUri($post->getUid()),
+                ], 'Organization');
+
+                if ($logo = $publisher['logo'] ?? null) {
+                    if (file_exists($absolutePath = GeneralUtility::getFileAbsFileName($logo))) {
+                        $event->addPropertyType('publisher.logo', ['url' => $this->forceAbsoluteUrl(PathUtility::getAbsoluteWebPath($absolutePath))], 'ImageObject');
+                    } else {
+                        throw new ResourceDoesNotExistException('Creating structured data of the blog post failed. The organization logo ("' . $logo . '") does not exist.', 1689283412);
+                    }
+                }
+            }
         }
     }
 }
