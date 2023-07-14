@@ -7,8 +7,6 @@ call_user_func(static function (string $_EXTKEY) {
         ->setClassName(\Zeroseven\PagebasedBlog\Domain\Model\Post::class)
         ->setControllerClass(\Zeroseven\PagebasedBlog\Controller\PostController::class)
         ->setRepositoryClass(\Zeroseven\PagebasedBlog\Domain\Repository\PostRepository::class)
-        ->enableTopics(1)
-        ->enableContact(1)
         ->enableRelations()
         ->enableTop()
         ->enableTags();
