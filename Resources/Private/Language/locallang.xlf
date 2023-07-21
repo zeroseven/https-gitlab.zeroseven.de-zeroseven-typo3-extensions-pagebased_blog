@@ -4,7 +4,7 @@
 		<header />
 		<body>
 			<trans-unit id="pagination.next">
-				<source>More jobs</source>
+				<source>More posts</source>
 			</trans-unit>
 		</body>
 	</file>
