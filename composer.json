@@ -16,7 +16,7 @@
 	],
 	"require": {
 		"typo3/cms-core": "^11.5.0 || ^12.4.0",
-		"zeroseven/pagebased": "*"
+		"zeroseven/pagebased": "^1.2.0"
 	},
 	"autoload": {
 		"psr-4": {
