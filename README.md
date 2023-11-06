@@ -1,7 +1,19 @@
 # Pagebased blog extension
 
-This extension is based on the TYPO3 **[pagebased](https://github.com/zeroseven/pagebased#readme)** extension
+This extension is based on the [TYPO3 pagebased extension](https://github.com/zeroseven/pagebased#readme)
 to create blog post that can be managed in TYPO3 with all the advantages and functions of "normal" pages.
+
+![Example of page based blog posts in TYPO3](Resources/Public/Images/Example.png)
+
+## Features
+
+- Create blog posts as pages
+- List and filter plugin
+- Tags
+- Categories
+- Contacts
+- Relations
+- Rss feed
 
 ## Quick installation
 
